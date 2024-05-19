@@ -28,6 +28,7 @@ jobs:
           bindings-ref: bindings2
           combine: true
           target: ${{ matrix.config.target }}
+          sdk: nightly
 
   package:
     name: Package builds
