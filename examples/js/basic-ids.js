@@ -13,14 +13,14 @@ socket.addEventListener('open', (event) => {
 	console.log("Connected to the server");
 	
 	const del = {
-		action: 'REMOVE',
+		action: 'REMOVE_OBJECTS',
 		group: 9999,
 		id: 1
 	};
 	socket.send(JSON.stringify(del));
 	
 	const add = {
-		action: 'ADD',
+		action: 'ADD_OBJECTS',
 		objects: "1,1,2,60,3,90,57,1.9999",
 		id: 2,
 		close: true

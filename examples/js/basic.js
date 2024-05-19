@@ -16,7 +16,7 @@ socket.addEventListener('open', (event) => {
 	const array = [45, 75, 105, 135, 165];
 	const randomElement = array[Math.floor(Math.random() * array.length)];
 	const add = {
-		action: 'ADD',
+		action: 'ADD_OBJECTS',
 		objects: "1,1,2," + randomElement + ",3,75,57,1.9999",
 		close: true
 	};

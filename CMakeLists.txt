@@ -10,7 +10,11 @@ project(WSLiveEditor VERSION 1.0.0)
 
 file(GLOB SOURCES
 	src/*.cpp
+    src/actions/Add.cpp
+    src/actions/Remove.cpp
+    src/actions/GetLevelString.cpp
 )
+
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
@@ -31,3 +35,5 @@ if (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_CXX_COMPILER_FRON
     target_compile_options(ixwebsocket PRIVATE --target=i686-pc-windows-msvc)
     target_link_options(ixwebsocket PRIVATE --target=i686-pc-windows-msvc)
 endif()
+
+target_include_directories(${PROJECT_NAME} PRIVATE src)
