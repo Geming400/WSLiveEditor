@@ -24,8 +24,8 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: iAndyHD3/bindings2
-          bindings-ref: main
+          bindings: iAndyHD3/bindings
+          bindings-ref: bindings2
           combine: true
           target: ${{ matrix.config.target }}
 
