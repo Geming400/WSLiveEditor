@@ -4,7 +4,12 @@
 #include "actions/Add.hpp"
 #include "actions/Remove.hpp"
 #include "actions/GetLevelString.hpp"
+#include "actions/GetSelectedObjects.hpp"
+#include "actions/RemoveSelected.hpp"
+#include "actions/GetNextFreeGroups.hpp"
+#include "actions/GetNextFreeLinks.hpp"
 
+#include <Geode/Geode.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
 #include <Geode/binding/LevelEditorLayer.hpp>
 #include <ixwebsocket/IXNetSystem.h>
@@ -147,7 +152,14 @@ struct LiveServerHooks : geode::Modify<LiveServerHooks, LevelEditorLayer>
     {
         if(!LevelEditorLayer::init(level, idk)) return false;
 
-        m_fields->server.AddActionRunners<AddObjectsAction, RemoveObjects, GetLevelString>();
+        m_fields->server.AddActionRunners<
+                AddObjectsAction,
+                RemoveObjects,
+                RemoveSelectedObjects,
+                GetLevelString,
+                GetSelectedObjects,
+                GetNextFreeGroups,
+                GetNextFreeLinks>();
         m_fields->server.init();
         this->schedule(schedule_selector(LiveServerHooks::performQueuedActions), 0.0f);
 

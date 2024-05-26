@@ -10,9 +10,7 @@ project(WSLiveEditor VERSION 1.0.0)
 
 file(GLOB SOURCES
 	src/*.cpp
-    src/actions/Add.cpp
-    src/actions/Remove.cpp
-    src/actions/GetLevelString.cpp
+    src/actions/*.cpp
 )
 
 

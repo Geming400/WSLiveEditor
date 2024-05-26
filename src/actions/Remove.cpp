@@ -1,6 +1,7 @@
 #include "Remove.hpp"
 #include "ActionResponse.hpp"
 
+#include <Geode/Geode.hpp>
 #include <Geode/utils/cocos.hpp>
 #include <Geode/loader/Log.hpp>
 #include <Geode/binding/GameObject.hpp>
