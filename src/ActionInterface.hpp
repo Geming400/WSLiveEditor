@@ -1,10 +1,9 @@
 #pragma once
 #include <matjson.hpp>
 #include <string_view>
+#include <optional>
 #include "ActionResponse.hpp"
 #include "Geode/binding/LevelEditorLayer.hpp"
-
-class LevelEditorLayer;
 
 struct ActionInterface
 {
@@ -18,14 +17,21 @@ struct ActionInterface
 
     inline bool isType(const matjson::Object& j)
     {
-        if(auto&& act = checkTypeGetVal<std::string>(j, "action"); act.first)
-        {
-            return isType(act.second);
-        }
-        return false;
+        return isType(getOpt<std::string>(j, "action").value_or(""));
     }
 
 protected:
+
+    template<typename T>
+    [[nodiscard]] static std::optional<T> getOpt(const matjson::Object& j, std::string_view key)
+    {
+        if(auto&& k = j.find(key); k != j.end() && k->second.is<T>())
+        {
+            return std::optional<T>{std::in_place_t{}, k->second.as<T>()};
+        }
+        return {};
+    }
+
     template<typename T>
     [[nodiscard]] static bool checkType(const matjson::Object& j, std::string_view key)
     {

@@ -15,11 +15,10 @@
 #include <ixwebsocket/IXWebSocketMessageType.h>
 #include <ixwebsocket/IXWebSocketServer.h>
 #include <Geode/loader/Log.hpp>
-#include <Geode/modify/LevelEditorLayer.hpp>
 #include <matjson.hpp>
 #include <mutex>
 
-
+#include <Geode/modify/LevelEditorLayer.hpp>
 
 bool LiveServer::init()
 {

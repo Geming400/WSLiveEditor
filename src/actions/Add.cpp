@@ -2,7 +2,6 @@
 #include "ActionResponse.hpp"
 #include <string>
 
-#include <Geode/Geode.hpp>
 #include <Geode/loader/Log.hpp>
 
 bool AddObjectsAction::isValid(const matjson::Object& j)

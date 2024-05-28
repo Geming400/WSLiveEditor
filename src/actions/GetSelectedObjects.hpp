@@ -1,9 +1,9 @@
 #pragma once
-#include <ActionInterface.hpp>
+#include "IGetObjectsAction.hpp"
 
-struct GetSelectedObjects : public ActionInterface
+struct GetSelectedObjects : public IGetObjectsAction
 {
     bool isValid(const matjson::Object&) override;
     inline std::string_view type() override { return "GET_SELECTED_OBJECTS"; }
-    ActionResponse run(LevelEditorLayer* editor, const matjson::Object&) override;
+    virtual geode::cocos::CCArrayExt<GameObject*> getObjects(LevelEditorLayer* editor) override;
 };

@@ -9,8 +9,14 @@ set(USE_ZLIB OFF)
 project(WSLiveEditor VERSION 1.0.0)
 
 file(GLOB SOURCES
-	src/*.cpp
-    src/actions/*.cpp
+    src/main.cpp
+    src/LiveServer.cpp
+    src/actions/Add.cpp
+    src/actions/GetLevelString.cpp
+    src/actions/GetSelectedObjects.cpp
+    src/actions/IGetObjectsAction.cpp
+    src/actions/Remove.cpp
+    src/actions/RemoveSelected.cpp
 )
 
 
