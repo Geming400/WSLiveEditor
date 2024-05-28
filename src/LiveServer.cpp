@@ -6,8 +6,6 @@
 #include "actions/GetLevelString.hpp"
 #include "actions/GetSelectedObjects.hpp"
 #include "actions/RemoveSelected.hpp"
-#include "actions/GetNextFreeGroups.hpp"
-#include "actions/GetNextFreeLinks.hpp"
 
 #include <Geode/Geode.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
@@ -157,9 +155,7 @@ struct LiveServerHooks : geode::Modify<LiveServerHooks, LevelEditorLayer>
                 RemoveObjects,
                 RemoveSelectedObjects,
                 GetLevelString,
-                GetSelectedObjects,
-                GetNextFreeGroups,
-                GetNextFreeLinks>();
+                GetSelectedObjects>();
         m_fields->server.init();
         this->schedule(schedule_selector(LiveServerHooks::performQueuedActions), 0.0f);
 
