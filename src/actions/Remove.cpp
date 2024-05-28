@@ -7,8 +7,6 @@
 #include <Geode/binding/GameObject.hpp>
 #include <Geode/binding/EditorUI.hpp>
 
-
-
 bool RemoveObjects::isValid(const matjson::Object& j)
 {
     if(auto group = checkTypeGetVal<int>(j, "group"); group.first)

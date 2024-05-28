@@ -1,8 +1,10 @@
 #pragma once
-#include <Geode/binding/LevelEditorLayer.hpp>
 #include <matjson.hpp>
 #include <string_view>
 #include "ActionResponse.hpp"
+#include "Geode/binding/LevelEditorLayer.hpp"
+
+class LevelEditorLayer;
 
 struct ActionInterface
 {

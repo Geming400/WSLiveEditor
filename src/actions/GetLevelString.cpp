@@ -1,7 +1,6 @@
 #include "GetLevelString.hpp"
 #include "ActionResponse.hpp"
 
-#include <Geode/Geode.hpp>
 #include <Geode/loader/Log.hpp>
 
 bool GetLevelString::isValid(const matjson::Object& j)
