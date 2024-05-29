@@ -32,6 +32,14 @@ protected:
         return {};
     }
 
+    //checks for the type if the key is present, returns true otherwise
+    template<typename T>
+    [[nodiscard]] static bool isTypeOrKeyMissing(const matjson::Object& j, std::string_view key)
+    {
+        auto&& k = j.find(key);
+        return k == j.end() ? true : k->second.is<T>();
+    }
+
     template<typename T>
     [[nodiscard]] static bool checkType(const matjson::Object& j, std::string_view key)
     {

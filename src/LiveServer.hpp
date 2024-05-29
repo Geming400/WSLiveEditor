@@ -47,6 +47,20 @@ public:
     void stop();
     void runQueuedActions(LevelEditorLayer*);
 
+    struct FindActionResult
+    {
+        enum Status
+        {
+            Success,
+            NotFound,
+            InvalidJson
+        } status = Status::NotFound;
+        ActionInterface* action = nullptr;
+        inline operator bool() { return action && status == Status::Success; }
+    };
+
+    FindActionResult getActionForJson(const matjson::Object& actionJson);
+
     void handleAction(const matjson::Object& action, ix::WebSocket* client);
     
     template <typename... T>
