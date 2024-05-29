@@ -4,7 +4,10 @@
 #include "actions/Add.hpp"
 #include "actions/Remove.hpp"
 #include "actions/GetLevelString.hpp"
+#include "actions/GetSelectedObjects.hpp"
+#include "actions/RemoveSelected.hpp"
 
+#include <Geode/Geode.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
 #include <Geode/binding/LevelEditorLayer.hpp>
 #include <ixwebsocket/IXNetSystem.h>
@@ -12,13 +15,14 @@
 #include <ixwebsocket/IXWebSocketMessageType.h>
 #include <ixwebsocket/IXWebSocketServer.h>
 #include <Geode/loader/Log.hpp>
-#include <Geode/modify/LevelEditorLayer.hpp>
 #include <matjson.hpp>
 #include <mutex>
 
+#include <Geode/modify/LevelEditorLayer.hpp>
 
+using LS = LiveServer;
 
-bool LiveServer::init()
+bool LS::init()
 {
     if(running)
     {
@@ -53,7 +57,7 @@ bool LiveServer::init()
     return true;
 }
 
-void LiveServer::onMessage(std::string_view message, ix::WebSocket* client)
+void LS::onMessage(std::string_view message, ix::WebSocket* client)
 {
     std::string jsonerror;
     auto json = matjson::parse(message, jsonerror);
@@ -74,27 +78,62 @@ void LiveServer::onMessage(std::string_view message, ix::WebSocket* client)
     }
 }
 
-void LiveServer::handleAction(const matjson::Object& action, ix::WebSocket* client)
+LS::FindActionResult LS::getActionForJson(const matjson::Object& actionJson)
 {
-    for(const auto& actionType : actionRunners)
-    {
-        if(actionType->isType(action) && actionType->isValid(action))
-        {
-            std::lock_guard lock(actionMutex);
-            addActionNoLock(action, actionType.get(), client);
-            queuedActions = true;
-            return;
-        }
-    }
-    ActionResponse::make_error("action type not found").send(client);
+    using enum LS::FindActionResult::Status;
+
+    LS::FindActionResult ret {.status = NotFound, .action = nullptr};
+
+    for(const auto& action : actionRunners)
+        if(action->isType(actionJson))
+            ret.action = action.get();
+
+    if(!ret.action) return ret;
+
+    ret.status = ret.action->isValid(actionJson) ? Success : InvalidJson;
+    return ret;
 }
 
-void LiveServer::onConnectionOpen()
+
+void LS::handleAction(const matjson::Object& actionJson, ix::WebSocket* client)
+{
+    //for(const auto& actionType : actionRunners)
+    //{
+    //    if(!actionType->isType(action)) continue;
+    //    
+    //    if(actionType->isType(action) && actionType->isValid(action))
+    //    {
+    //        std::lock_guard lock(actionMutex);
+    //        addActionNoLock(action, actionType.get(), client);
+    //        queuedActions = true;
+    //        return;
+    //    }
+    //}
+
+    auto actionResult = getActionForJson(actionJson);
+    if(actionResult)
+    {
+        std::lock_guard lock(actionMutex);
+        addActionNoLock(actionJson, actionResult.action, client);
+        queuedActions = true;
+    }
+    else if(actionResult.status == FindActionResult::NotFound)
+    {
+        ActionResponse::make_error("action type not found").send(client);
+    }
+    else if(actionResult.status == FindActionResult::InvalidJson)
+    {
+        ActionResponse::make_error("Invalid json for specified action").send(client);
+    }
+
+}
+
+void LS::onConnectionOpen()
 {
     geode::log::info("connection opened");
 }
 
-void LiveServer::stop()
+void LS::stop()
 {
     if(!running) return;
 
@@ -108,12 +147,12 @@ void LiveServer::stop()
     running = false;
 }
 
-LiveServer::~LiveServer()
+LS::~LiveServer()
 {
     stop();
 }
 
-void LiveServer::runQueuedActions(LevelEditorLayer* editor)
+void LS::runQueuedActions(LevelEditorLayer* editor)
 {
     if(queuedActions)
     {
@@ -131,11 +170,11 @@ void LiveServer::runQueuedActions(LevelEditorLayer* editor)
 }
 
 
-struct LiveServerHooks : geode::Modify<LiveServerHooks, LevelEditorLayer>
+struct LSHooks : geode::Modify<LSHooks, LevelEditorLayer>
 {
     struct Fields
     {
-        LiveServer server;
+        LS server;
     };
 
     void performQueuedActions(float dt)
@@ -147,9 +186,14 @@ struct LiveServerHooks : geode::Modify<LiveServerHooks, LevelEditorLayer>
     {
         if(!LevelEditorLayer::init(level, idk)) return false;
 
-        m_fields->server.AddActionRunners<AddObjectsAction, RemoveObjects, GetLevelString>();
+        m_fields->server.AddActionRunners<
+                AddObjectsAction,
+                RemoveObjects,
+                RemoveSelectedObjects,
+                GetLevelString,
+                GetSelectedObjects>();
         m_fields->server.init();
-        this->schedule(schedule_selector(LiveServerHooks::performQueuedActions), 0.0f);
+        this->schedule(schedule_selector(LSHooks::performQueuedActions), 0.0f);
 
         return true;
     }
