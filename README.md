@@ -13,6 +13,9 @@ Check out the [wiki](../../wiki).
 ## FAQ
 Befor opening an issue, look at the [FAQ](../../wiki/FAQ)
 
+## Bugs/Features/Questions/Discussion
+Open an issue or join the [discord server](https://discord.gg/xb6JWZnk9J)
+
 ## Projects using this mod:
 
 - [spwn-rewrite (old, unreleased)](https://github.com/Spu7Nix/SPWN-language/tree/RWRT%C2%B2%E2%81%BB%E1%B5%87%CA%B8%E1%B5%97%E1%B5%89%E1%B6%9C%E1%B5%92%E1%B5%88%E1%B5%89)
