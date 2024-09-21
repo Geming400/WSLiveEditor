@@ -17,6 +17,18 @@ file(GLOB SOURCES
     src/actions/IGetObjectsAction.cpp
 )
 
+#[===[
+file(GLOB SOURCES
+    src/main.cpp
+    src/LiveServer.cpp
+    src/actions/Add.cpp
+    src/actions/GetLevelString.cpp
+    src/actions/GetSelectedObjects.cpp
+    src/actions/IGetObjectsAction.cpp
+    src/actions/Remove.cpp
+    src/actions/RemoveSelected.cpp
+)
+]===]
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
