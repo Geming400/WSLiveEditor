@@ -15,8 +15,6 @@ file(GLOB SOURCES
     src/actions/GetLevelString.cpp
     src/actions/GetSelectedObjects.cpp
     src/actions/IGetObjectsAction.cpp
-    src/actions/Remove.cpp
-    src/actions/RemoveSelected.cpp
 )
 
 
