@@ -4,6 +4,8 @@
 #include "actions/Add.hpp"
 #include "actions/GetLevelString.hpp"
 #include "actions/GetSelectedObjects.hpp"
+// #include "actions/RemoveSelected.hpp"
+// #include "actions/Remove.hpp"
 
 #include <Geode/Geode.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
@@ -188,6 +190,14 @@ struct LSHooks : geode::Modify<LSHooks, LevelEditorLayer>
                 AddObjectsAction,
                 GetLevelString,
                 GetSelectedObjects>();
+        /*
+        m_fields->server.AddActionRunners<
+                AddObjectsAction,
+                RemoveObjects,
+                RemoveSelectedObjects,
+                GetLevelString,
+                GetSelectedObjects>();
+        */
         m_fields->server.init();
         this->schedule(schedule_selector(LSHooks::performQueuedActions), 0.0f);
 
