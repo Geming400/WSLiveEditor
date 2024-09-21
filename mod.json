@@ -4,8 +4,8 @@
 		"win": "2.206"
 	},
 	"version": "v2.1.5",
-	"id": "geming400.wsliveeditor",
-	"name": "WSLiveEditor by geming400",
+	"id": "iandyhd3.wsliveeditor",
+	"name": "WSLiveEditor for geming400",
 	"developer": "iAndyHD3",
 	"description": "WebSocket server to interact with the editor",
 	"repository": "https://github.com/iAndyHD3/WSLiveEditor/",
