@@ -1,23 +1,22 @@
 {
-	"geode": "2.0.0-beta.27",
+	"geode": "3.7.1",
 	"gd": {
-		"win": "2.204"
+		"win": "2.206"
 	},
-	"version": "v2.1.0",
-	"id": "iandyhd3.wsliveeditor",
-	"name": "WSLiveEditor",
+	"version": "v2.1.5",
+	"id": "geming400.wsliveeditor",
+	"name": "WSLiveEditor by geming400",
 	"developer": "iAndyHD3",
 	"description": "WebSocket server to interact with the editor",
-	"repository": "https://github.com/iAndyHD3/WSLiveEditor",
+	"repository": "https://github.com/iAndyHD3/WSLiveEditor/",
 	"issues": {
 		"url": "https://github.com/iAndyHD3/WSLiveEditor/issues",
 		"info": "If you encounter issues (like crashes) please report it to the GitHub issues page."
 	},
 	"tags": [
-   	 "Devlopement",
-	 "Tool",
-	 "External",
-	 "Utility",
-	 "Editor"
+   	 "developer",
+	 "utility",
+	 "editor",
+	 "offline"
   	]
 }
