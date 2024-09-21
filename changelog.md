@@ -1,5 +1,8 @@
 # WSLiveEditor Changelog
 
+## v2.1.5
+- Removed actions that can remove objects in the editor as there are privated functions
+
 ## v2.0.0
 - Rewrite the entire thing
 - Add GET_LEVEL_STRING action
