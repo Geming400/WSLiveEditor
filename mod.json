@@ -24,7 +24,7 @@
 			"type": "int",
 			"name": "Port",
 			"default": 1313,
-			"description": "This will set on which port WSLiveEditor will use the WebSocket protocol. You will need to restart geometry dash for this to take effect !",
+			"description": "This will set on which port the WebSocket server will run. You will need to restart geometry dash for this to take effect !",
 			"min": 0,
 			"max": 65535,
 			"requires-restart": true,
