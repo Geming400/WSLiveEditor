@@ -4,7 +4,7 @@
 		"win": "2.206"
 	},
 	"version": "v2.2.0",
-	"id": "geming400.wsliveeditor",
+	"id": "iandyhd3.wsliveeditor",
 	"name": "WSLiveEditor",
 	"developer": "iAndyHD3",
 	"description": "WebSocket server to interact with the editor",
@@ -24,7 +24,7 @@
 			"type": "int",
 			"name": "Port",
 			"default": 1313,
-			"description": "This will set on which port WSLiveEditor will use WebSocket. You will need to restart geometry dash for this to take effect !",
+			"description": "This will set on which port WSLiveEditor will use the WebSocket protocol. You will need to restart geometry dash for this to take effect !",
 			"min": 0,
 			"max": 65535,
 			"requires-restart": true,
