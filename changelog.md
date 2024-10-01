@@ -3,7 +3,7 @@
 ## v2.2.0
 - Re-add the actions type that can remove objects in the editor
 
-*(Thank to [@Geming400](https://github.com/Geming400) for the `2.1.0` and `2.1.5` update)*
+*(Thank to [@Geming400](https://github.com/Geming400) for the `2.1.5` and `2.2.0` update)*
 
 # v2.1.5
 - Remov actions that can remove objects in the editor
