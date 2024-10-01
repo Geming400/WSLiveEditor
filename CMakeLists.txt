@@ -6,21 +6,22 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(GEODE_DISABLE_PRECOMPILED_HEADERS ON)
 set(USE_ZLIB OFF)
 
-project(WSLiveEditor VERSION 1.0.0)
+project(WSLiveEditor VERSION 2.2.0)
 
-file(GLOB SOURCES
+#[===[file(GLOB SOURCES
     src/main.cpp
     src/LiveServer.cpp
     src/actions/Add.cpp
     src/actions/GetLevelString.cpp
     src/actions/GetSelectedObjects.cpp
     src/actions/IGetObjectsAction.cpp
-)
+)]===]
 
-#[===[
+
 file(GLOB SOURCES
     src/main.cpp
     src/LiveServer.cpp
+    src/WarningPopup.cpp
     src/actions/Add.cpp
     src/actions/GetLevelString.cpp
     src/actions/GetSelectedObjects.cpp
@@ -28,7 +29,7 @@ file(GLOB SOURCES
     src/actions/Remove.cpp
     src/actions/RemoveSelected.cpp
 )
-]===]
+
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
