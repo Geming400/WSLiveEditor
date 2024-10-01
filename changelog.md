@@ -1,7 +1,16 @@
 # WSLiveEditor Changelog
 
-## v2.1.5
-- Removed actions that can remove objects in the editor as there are privated functions
+## v2.2.0
+- Re-add the actions type that can remove objects in the editor
+
+*(Thank to [@Geming400](https://github.com/Geming400) for the `2.1.0` and `2.1.5` update)*
+
+# 2.1.5
+- Remov actions that can remove objects in the editor
+
+# 2.1.0
+- add `GET_SELECTED_OBJECTS` action
+- add `REMOVE_SELECTED_OBJECTS` action
 
 ## v2.0.0
 - Rewrite the entire thing
