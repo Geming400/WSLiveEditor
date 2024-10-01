@@ -5,10 +5,10 @@
 
 *(Thank to [@Geming400](https://github.com/Geming400) for the `2.1.0` and `2.1.5` update)*
 
-# 2.1.5
+# v2.1.5
 - Remov actions that can remove objects in the editor
 
-# 2.1.0
+# v2.1.0
 - add `GET_SELECTED_OBJECTS` action
 - add `REMOVE_SELECTED_OBJECTS` action
 
@@ -17,6 +17,7 @@
 - Add GET_LEVEL_STRING action
 - Changed response json a bit
 - Disconnect clients automatically when leaving editor
+- Removed the `COLOR_CHANNEL` action
 
 ## v1.0.2
 - add `COLOR_CHANNEL` action
