@@ -86,7 +86,7 @@ ActionResponse RemoveObjects::run(LevelEditorLayer* editor, const matjson::Objec
         geode::log::debug("hasGroup = {}", hasGroup(obj, groupToDelete));
 
         if (hasGroup(obj, groupToDelete)) {
-            geode::log::debug("Added object to 'toDelete' list");
+            geode::log::debug("Added object to 'toDelete' array");
             toDelete->addObject(obj);
             //geode::log::info("Object has group " + std::to_string(groupToDelete)); // logs does not work for whatever reasons
         }
@@ -98,7 +98,6 @@ ActionResponse RemoveObjects::run(LevelEditorLayer* editor, const matjson::Objec
         m_objects->removeObject(obj);
         editor->removeChild(obj, true);
         //////// removes the object from the editor ////////
-        obj->cleanup();
         geode::log::debug("Removed a object with group {}", groupToDelete);
     }
 
