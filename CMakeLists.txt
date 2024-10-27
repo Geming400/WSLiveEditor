@@ -21,7 +21,7 @@ project(WSLiveEditor VERSION 2.2.0)
 file(GLOB SOURCES
     src/main.cpp
     src/LiveServer.cpp
-    src/WarningPopup.cpp
+    src/InfoPopup.cpp
     src/actions/Add.cpp
     src/actions/GetLevelString.cpp
     src/actions/GetSelectedObjects.cpp
