@@ -1,5 +1,4 @@
 #include <Geode/Geode.hpp>
-#include <Geode/binding/FLAlertLayer.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 
 using namespace geode::prelude;
@@ -8,7 +7,7 @@ auto savedValueKey = "has-readed-info-message";
 
 bool hasReadedInfoMessage = Mod::get()->getSavedValue<bool>(savedValueKey, false);
 
-class $modify(MenuLayer) {
+class $modify(MyMenuLayer, MenuLayer) {
     void userHasReadedMessage() {
         hasReadedInfoMessage = true;
         Mod::get()->setSavedValue(savedValueKey, true);
@@ -19,7 +18,9 @@ class $modify(MenuLayer) {
             return false;
 
         if (hasReadedInfoMessage)
-            return false;
+            return true;
+        
+            
 
         geode::log::info("Showing WSLiveEditor's info message");
 
