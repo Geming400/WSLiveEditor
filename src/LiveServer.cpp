@@ -22,8 +22,6 @@
 
 using namespace geode::prelude;
 
-int64_t portSetting = Mod::get()->getSettingValue<int64_t>("port"); // default = 1313
-
 using LS = LiveServer;
 
 bool LS::init()
@@ -34,7 +32,7 @@ bool LS::init()
     }
     ix::initNetSystem();
 
-    ws = std::make_unique<ix::WebSocketServer>(portSetting);
+    ws = std::make_unique<ix::WebSocketServer>(Mod::get()->getSettingValue<int64_t>("port")); // default = 1313
 
 
     ws->setOnClientMessageCallback([this](std::shared_ptr<ix::ConnectionState> connectionState, ix::WebSocket & webSocket, const ix::WebSocketMessagePtr & msg)
