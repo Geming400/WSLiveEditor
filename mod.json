@@ -3,8 +3,8 @@
 	"gd": {
 		"win": "2.206"
 	},
-	"version": "v2.2.0",
-	"id": "geming400.wsliveeditor",
+	"version": "v2.2.1",
+	"id": "iandyhd3.wsliveeditor",
 	"name": "WSLiveEditor",
 	"developer": "iAndyHD3",
 	"description": "WebSocket server to interact with the editor",
